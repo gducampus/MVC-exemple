@@ -1,0 +1,21 @@
+{% extends 'base.twig' %}
+
+{% block title %}Accueil - Mon Blog{% endblock %}
+
+{% block content %}
+    <h2>Bienvenue sur Mon Blog!</h2>
+    <p>Ceci est la page d'accueil de notre blog.</p>
+
+    <hr>
+
+    <h1>Dernières actualités</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <h2><a href="/blog/view?id={{ post.id }}">{{ post.title }}</a></h2>
+            <p>{{ post.content | slice(0, 150) }}...</p>
+            <small>Posted on: {{ post.created_at }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Blog{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1><a href="{{ BASE_URL }}">Mon Blog</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/blog">Articles</a></li>
+                {% if session.user_id %}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="{{ BASE_URL }}logout">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ BASE_URL }}login">Connexion</a></li>
+                    <li><a href="{{ BASE_URL }}register">Inscription</a></li>
+                {% endif %}
+                <li><a href="/contact">Contactez-moi</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ "now"|date("Y") }} Mon Blog. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
